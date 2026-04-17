@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: windsor-careers
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_KEY
+        generateValue: true
+      - key: GOOGLE_SHEET_URL
+        sync: false
+    disk:
+      name: careers-data
+      mountPath: /app/data
+      sizeGB: 1
